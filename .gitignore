@@ -1,0 +1,19 @@
+# Ignore Python cache and virtual environments
+__pycache__/
+*.pyc
+.env
+.venv/
+env/
+venv/
+
+# Ignore system files
+.DS_Store
+
+# Ignore Streamlit generated files
+.streamlit/
+
+# Ignore IDE/project files
+.vscode/
+.idea/
+
+firebase_key.json
