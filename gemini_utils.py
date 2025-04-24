@@ -14,7 +14,7 @@ genai.configure(api_key=api_key)
 # Init model once
 model = genai.GenerativeModel("gemini-1.5-flash")
 
-def generate_test_items(subject: str, goal: str, hobby: str) -> list:
+def generate_test_items(topic: str, goal: str, extra: str) -> list:
     """
     Sends a prompt to Gemini to generate 5 test items (questions and correct answers)
     based on subject, learning goal, and extra info.
@@ -28,15 +28,15 @@ def generate_test_items(subject: str, goal: str, hobby: str) -> list:
         ...
     ]
     """
-    if not subject or not goal or not hobby:
+    if not topic or not goal or not extra:
         return []
 
     prompt = (
         f"You are a teacher creating quiz questions for a student.\n"
-        f"Subject: {subject}\n"
-        f"Learning goal: {goal}\n"
-        f"Additional context or topic: {hobby}\n\n"
-        f"Generate 5 short-answer test questions for this context.\n"
+        f"The topic of the quiz is: {topic}\n"
+        f"This is the specific learning goal: {goal}\n"
+        f"Generate 5 short-answer test questions for assessing if students reached the learning goal.\n"
+        f"If available use this extra information for generation of quiz items: {extra}\n\n"
         f"Each question should be clear and answerable in a single word or short phrase.\n"
         f"Return your response ONLY as a valid JSON list with the following format:\n\n"
         f"[\n"
@@ -65,8 +65,13 @@ def generate_test_items(subject: str, goal: str, hobby: str) -> list:
             return []
 
     except Exception as e:
-        st.error(f"Gemini error during test item generation: {e}")
-        return []
+        error_message = str(e).lower()
+        if "quota" in error_message or "rate limit" in error_message:
+            st.warning("🚨 Too many requests. Please wait a few seconds and try again.")
+        else:
+            st.error(f"Gemini API error: {e}")
+        return None
+
 
 
 def generate_overall_feedback(responses: list) -> str:
@@ -103,4 +108,9 @@ def generate_overall_feedback(responses: list) -> str:
         return response.text.strip()
 
     except Exception as e:
-        return f"⚠️ Gemini error: {e}"
+        error_message = str(e).lower()
+        if "quota" in error_message or "rate limit" in error_message:
+            st.warning("🚨 Too many requests. Please wait a few seconds and try again.")
+        else:
+            st.error(f"Gemini API error: {e}")
+        return None

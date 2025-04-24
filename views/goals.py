@@ -1,15 +1,51 @@
 import streamlit as st
 
+# --- Dummy data structure (to be replaced by DB later) ---
+learning_context = {
+    "Tenses (English)": {
+        "goals": ["Present Simple", "Present Continuous", "Past Simple", "Present Perfect"],
+        "extras": ["Dancing", "Music", "Soccer", "Racing Cars"]
+    },
+    "Active and Passive Voice (English)": {
+        "goals": ["Role of Subject", "Role of the Verb", "Role of the Object"],
+        "extras": ["Dancing", "Music", "Soccer", "Racing Cars"]
+    },
+    "Adjectives (English)": {
+        "goals": ["Negative Prefixes", "Comparative and Superlative Forms"],
+        "extras": ["Dancing", "Music", "Soccer", "Racing Cars"]
+    },
+    "Trennbare und untrennbare Präfixe (German language)": {
+        "goals": ["Trennbare Präfixe", "Untrennbare Präfixe", "Relativ trennbare Präfixe"],
+        "extras": ["Dancing", "Music", "Soccer", "Racing Cars"]
+    },
+    "Stock Market (Economy)": {
+        "goals": ["Basic Concepts", "Market Behavior", "Investment Strategies"],
+        "extras": ["Tech Stocks", "Compound Interest"]
+    },
+    "Chinese Language": {
+        "goals": ["Chinese Words", "Chinese Characters", "Chinese Idioms"],
+        "extras": []
+    },
+    "Word Problems (Math)": {
+        "goals": ["Addition", "Multiplication", "Subtraction", "Division"],
+        "extras": ["Dancing", "Music", "Soccer", "Racing Cars"]
+    },
+    "Slavery (History education)": {
+        "goals": ["Concept of Slavery", "Timeline of Slavery", "Impact of Slavery", "Slavery in today Society"],
+        "extras": []
+    }
+}
+
 # -- Init session state ---
 for key, default in {
-    "subject": None,
-    "learning_goal": None,
-    "hobby": None,
+    "topic": None,
+    "goal": None,
+    "extra": None,
 }.items():
     if key not in st.session_state:
         st.session_state[key] = default
 
-# --- Subject selection ---
+# --- Layout ---
 col1, col2 = st.columns([1, 8])
 with col1:
     st.image("images/masteryx.jpg", width=60)
@@ -18,30 +54,24 @@ with col2:
 
 st.subheader("Set your learning goal!", divider="blue")
 
-subject_options = ["English", "Math", "Biology"]
-st.session_state["subject"] = st.selectbox("Choose your subject:", [""] + subject_options)
+# --- Topic selection ---
+st.session_state.topic = st.selectbox("Choose your topic:", [""] + list(learning_context.keys()))
 
-# --- Learning goals per subject ---
-learning_goals = {
-    "English": ["Present Simple", "Present Continuous", "Past Simple", "Present Perfect"],
-    "Math": ["Linear Equations", "Fractions", "Word Problems", "Geometry Basics"],
-    "Biology": ["Photosynthesis", "Human Organs", "Cells and DNA", "Ecosystems"]
-}
+if st.session_state.topic:
+    st.session_state.goal = st.selectbox("Select a learning goal:", [""] + learning_context[st.session_state.topic]["goals"])
 
-if st.session_state["subject"]:
-    st.session_state["learning_goal"] = st.selectbox(
-        "Select a learning goal:",
-        [""] + learning_goals[st.session_state["subject"]]
-    )
+    extras = learning_context[st.session_state.topic]["extras"]
 
-# --- Hobby or topic of interest ---
-if st.session_state["subject"] and st.session_state["learning_goal"]:
-    hobby = ["Music", "Basketball", "Fashion", "Soccer", "Painting", "Dancing", "Cooking", "Racing Cars", "Gaming"]
-    st.session_state["hobby"] = st.pills("Choose a topic of interest:", hobby, selection_mode="single")
+    # If extras are available for this topic
+    if st.session_state.goal and extras:
+        st.session_state.extra = st.selectbox("Choose your interest:", [""] + extras)
 
-# --- Confirmation summary ---
-if st.session_state["learning_goal"] and st.session_state["extra"] and st.session_state["hobby"] :
-    st.switch_page("views/assessment.py")
-else:
-    st.info("Please make all your selections to proceed.")
-
+        if st.session_state.extra:
+            st.success(f"You're ready! ✅\n\nTopic: **{st.session_state.topic}**\nGoal: **{st.session_state.goal}**\nExtra: **{st.session_state.extra}**")
+            st.switch_page("views/assessment.py")
+    
+    # If no extras — skip that part
+    elif st.session_state.goal and not extras:
+        st.session_state.extra = ""
+        st.success(f"You're ready! ✅\n\nTopic: **{st.session_state.topic}**\nGoal: **{st.session_state.goal}**")
+        st.switch_page("views/assessment.py")
