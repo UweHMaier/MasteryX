@@ -28,6 +28,7 @@ pg = st.navigation(pages=[goals_page, assessment_page])
 
 # --- Shared on all pages ---
 st.logo("images/masteryx.jpg")
+st.sidebar.markdown("### MasteryX-APP")
 st.sidebar.markdown(f"👋 Hello {st.session_state['user']}!")
 st.sidebar.markdown(f"🆔 Session-ID: `{st.session_state['session_id']}`")
 

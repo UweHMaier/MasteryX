@@ -49,8 +49,9 @@ else:
         st.session_state.feedback = generate_overall_feedback(st.session_state.responses)
         st.session_state.show_feedback = True
 
-    st.subheader("✅ Assessment Complete!")
+    st.subheader("Assessment Complete!")
     st.write(st.session_state.feedback)
+    st.balloons()
 
 if st.session_state.get("show_feedback"):
     # --- Reset assessment only ---

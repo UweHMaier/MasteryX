@@ -10,7 +10,13 @@ for key, default in {
         st.session_state[key] = default
 
 # --- Subject selection ---
-st.title("Set your learning goal!")
+col1, col2 = st.columns([1, 8])
+with col1:
+    st.image("images/masteryx.jpg", width=60)
+with col2:
+    st.title("Welcome To MasteryX")
+
+st.subheader("Set your learning goal!", divider="blue")
 
 subject_options = ["English", "Math", "Biology"]
 st.session_state["subject"] = st.selectbox("Choose your subject:", [""] + subject_options)
