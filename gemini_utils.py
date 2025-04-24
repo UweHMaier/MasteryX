@@ -14,7 +14,7 @@ genai.configure(api_key=api_key)
 # Init model once
 model = genai.GenerativeModel("gemini-1.5-flash")
 
-def generate_test_items(subject: str, goal: str, extra: str) -> list:
+def generate_test_items(subject: str, goal: str, hobby: str) -> list:
     """
     Sends a prompt to Gemini to generate 5 test items (questions and correct answers)
     based on subject, learning goal, and extra info.
@@ -28,14 +28,14 @@ def generate_test_items(subject: str, goal: str, extra: str) -> list:
         ...
     ]
     """
-    if not subject or not goal or not extra:
+    if not subject or not goal or not hobby:
         return []
 
     prompt = (
         f"You are a teacher creating quiz questions for a student.\n"
         f"Subject: {subject}\n"
         f"Learning goal: {goal}\n"
-        f"Additional context or topic: {extra}\n\n"
+        f"Additional context or topic: {hobby}\n\n"
         f"Generate 5 short-answer test questions for this context.\n"
         f"Each question should be clear and answerable in a single word or short phrase.\n"
         f"Return your response ONLY as a valid JSON list with the following format:\n\n"

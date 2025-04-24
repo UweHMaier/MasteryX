@@ -4,7 +4,7 @@ import streamlit as st
 for key, default in {
     "subject": None,
     "learning_goal": None,
-    "extra": None,
+    "hobby": None,
 }.items():
     if key not in st.session_state:
         st.session_state[key] = default
@@ -34,21 +34,13 @@ if st.session_state["subject"]:
         [""] + learning_goals[st.session_state["subject"]]
     )
 
-# --- Optional extras by subject ---
-if st.session_state["subject"] == "English" and st.session_state["learning_goal"]:
-    verbs = ["Regular Verbs", "Irreglular Verbs"]
-    st.session_state["extra"] = st.pills("Choose a hobby:", verbs, selection_mode="single")
-
-elif st.session_state["subject"] == "Math" and st.session_state["learning_goal"]:
-    levels = ["Easy", "Medium", "Hard"]
-    st.session_state["extra"] = st.pills("Choose your difficulty level:", levels, selection_mode="single")
-
-elif st.session_state["subject"] == "Biology" and st.session_state["learning_goal"]:
-    areas = ["Plants", "Humans", "Animals", "Environment"]
-    st.session_state["extra"] = st.pills("Choose your focus area:", areas, selection_mode="single")
+# --- Hobby or topic of interest ---
+if st.session_state["subject"] and st.session_state["learning_goal"]:
+    hobby = ["Music", "Basketball", "Fashion", "Soccer", "Painting", "Dancing", "Cooking", "Racing Cars", "Gaming"]
+    st.session_state["hobby"] = st.pills("Choose a topic of interest:", hobby, selection_mode="single")
 
 # --- Confirmation summary ---
-if st.session_state["learning_goal"] and st.session_state["extra"]:
+if st.session_state["learning_goal"] and st.session_state["extra"] and st.session_state["hobby"] :
     st.switch_page("views/assessment.py")
 else:
     st.info("Please make all your selections to proceed.")
