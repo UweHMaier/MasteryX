@@ -44,15 +44,63 @@ content = {
         "goals": [
             {
                 "name": "Basic Concepts",
-                "rule": "Fundamental terms and ideas in the stock market such as shares, stocks, and equity.",
+                "rule": "A share is a single unit of ownership in a company that gives the holder rights to a portion of the company’s profits and possibly voting rights. Stock represents ownership in a company and is made up of one or more shares. A dividend is a portion of a company’s profits that is paid out to shareholders. Liquidity refers to how quickly and easily an asset can be bought or sold in the market without aGecting its price. Market capitalisation is the total value of a company's outstanding shares, calculated by multiplying the share price by the total number of shares.",
                 "test_items": [
-                    {"question": "Fill in the gap!",
-                     "sentence": "Ronaldo buys 1000 ___ of this company.",
-                     "correct_answer": "shares"},
-                    {"question": "What is a 'dividend'?",
-                     "correct_answer": "A portion of company profits paid to shareholders"},
-                    {"question": "What is 'equity' in finance?",
-                     "correct_answer": "Ownership value in an asset or company"}
+                    {
+                    "question": "Fill in the gap!",
+                    "sentence": "Ronaldo bought 100 ___ in a football boot company last Friday.",
+                    "correct_answer": "shares"
+                    },
+                    {
+                    "question": "Fill in the gap!",
+                    "sentence": "The gaming console company’s stock has high ___—it’s easy to sell fast.",
+                    "correct_answer": "liquidity"
+                    },
+                    {
+                    "question": "Fill in the gap!",
+                    "sentence": "The football app’s ___ grew after it signed a famous striker.",
+                    "correct_answer": "market capitalisation"
+                    },
+                    {
+                    "question": "Fill in the gap!",
+                    "sentence": "A ___ in the VR gaming company means owning a piece of the business.",
+                    "correct_answer": "stock"
+                    },
+                    {
+                    "question": "Fill in the gap!",
+                    "sentence": "A company with high ___ lets you sell shares quickly and easily.",
+                    "correct_answer": "liquidity"
+                    },
+                    {
+                    "question": "Fill in the gap!",
+                    "sentence": "What do we call one unit of ownership in a music producing company? It’s a ___.",
+                    "correct_answer": "share"
+                    },
+                    {
+                    "question": "Fill in the gap!",
+                    "sentence": "Taylor Swift receives money each year just for holding stock. It’s called a ___.",
+                    "correct_answer": "dividend"
+                    },
+                    {
+                    "question": "Fill in the gap!",
+                    "sentence": "Kylian owns multiple ___ in a VR company.",
+                    "correct_answer": "shares"
+                    },
+                    {
+                    "question": "Fill in the gap!",
+                    "sentence": "Messi invested in a ___ that lets him own part of the club.",
+                    "correct_answer": "stock"
+                    },
+                    {
+                    "question": "Fill in the gap!",
+                    "sentence": "The club sends profits to shareholders every season. These payments are called ___.",
+                    "correct_answer": "dividends"
+                    },
+                    {
+                    "question": "Fill in the gap!",
+                    "sentence": "She sold her gaming company shares in seconds. High ___ helped her do that.",
+                    "correct_answer": "liquidity"
+                    }
                 ]
             },
             {
