@@ -46,9 +46,13 @@ content = {
                 "name": "Basic Concepts",
                 "rule": "Fundamental terms and ideas in the stock market such as shares, stocks, and equity.",
                 "test_items": [
-                    {"question": "What does a 'share' represent?", "correct_answer": "Ownership in a company"},
-                    {"question": "What is a 'dividend'?", "correct_answer": "A portion of company profits paid to shareholders"},
-                    {"question": "What is 'equity' in finance?", "correct_answer": "Ownership value in an asset or company"}
+                    {"question": "Fill in the gap!",
+                     "sentence": "Ronaldo buys 1000 ___ of this company.",
+                     "correct_answer": "shares"},
+                    {"question": "What is a 'dividend'?",
+                     "correct_answer": "A portion of company profits paid to shareholders"},
+                    {"question": "What is 'equity' in finance?",
+                     "correct_answer": "Ownership value in an asset or company"}
                 ]
             },
             {
@@ -212,20 +216,181 @@ content = {
         ]
     },
 
-        "Active and passive voice": {
+    "Active and passive voice": {
         "goals": [
             {
                 "name": "Active voice",
                 "rule": "....",
                 "test_items": [
-                    { "question": "Identify the subject that performs the action",
+                    { "instruction": "Identify the subject that performs the action",
                      "sentence": "The cartoon amuses children with its funny characters.",
                      "correct_answer": "cartoon" },
-                     { "question": "Identify the subject that performs the action",
-                      "sentence": "A soccer team trains hard for the championship game.",
-                      "correct_answer": "team" },
+                    { "instruction": "Identify the subject that performs the action", "sentence": "A soccer team trains hard for the championship game.", "correct_answer": "team" }, 
+                    { "instruction": "Identify the subject that performs the action", "sentence": "Little kids dance to the music on TV.", "correct_answer": "kids" }, 
+                    { "instruction": "Identify the subject that performs the action", "sentence": "The dog chases the ball enthusiastically in the park.", "correct_answer": "dog" },
+                    { "instruction": "Identify the subject that performs the action", "sentence": "A young girl sings a beautiful song on stage.", "correct_answer": "girl" }, 
+                    { "instruction": "Identify the subject that performs the action", "sentence": "The students study their lessons diligently every day.", "correct_answer": "students" }, 
+                    { "instruction": "Identify the subject that performs the action", "sentence": "My brother plays video games after school.", "correct_answer": "brother" },
+                    { "instruction": "Identify the subject that performs the action", "sentence": "The clown entertains the kids at the birthday party.", "correct_answer": "clown"}, 
+                    { "instruction": "Identify the subject that performs the action", "sentence": "The athletes run a marathon to raise money for charity.", "correct_answer": "athletes" }, 
+                    { "instruction": "Identify the subject that performs the action", "sentence": "The teacher reads an interesting book to the class.", "correct_answer": "teacher" }
+                ]
+            },
+            {
+                "name": "Passive voice",
+                "rule": "....",
+                "test_items": [
+                   { "instruction": "Identify the subject that performs the action in the sentence expressed as passive voice.", "sentence": "The catchy tune was sung by the children's choir at the concert.", "correct_answer": "choir" }, 
+                   { "instruction": "Identify the subject that performs the action in the sentence expressed as passive voice.", "sentence": "The animated movie was enjoyed by kids all over the world.", "correct_answer": "kids" }, 
+                   { "instruction": "Identify the subject that performs the action in the sentence expressed as passive voice.", "sentence": "The popular song was played by the DJ at the school dance.", "correct_answer": "DJ" }, 
+                   { "instruction": "Identify the subject that performs the action in the sentence expressed as passive voice.", "sentence": "The fun game was created by the developers for young children.", "correct_answer": "developers" },
+                    { "instruction": "Identify the subject that performs the action in the sentence expressed as passive voice.", "sentence": "The sweet story was written by the author for her daughter.", "correct_answer": "author" }, 
+                    { "instruction": "Identify the subject that performs the action in the sentence expressed as passive voice.", "sentence": "The colourful drawing was made by the talented student in class.", "correct_answer": "student" }, 
+                    { "instruction": "Identify the subject that performs the action in the sentence expressed as passive voice.", "sentence": "The delicious cookies were baked by the mom for the bake sale.", "correct_answer": "mom" },
+                    { "instruction": "Identify the subject that performs the action in the sentence expressed as passive voice.", "sentence": "The exciting adventure was experienced by the campers in the forest.", "correct_answer": "campers" },
+                    { "instruction": "Identify the subject that performs the action in the sentence expressed as passive voice.", "sentence": "The silly joke was told by the comedian at the kids' party.", "correct_answer": "comedian" }, 
+                    { "instruction": "Identify the subject that performs the action in the sentence expressed as passive voice.", "sentence": "The new playground was built by the construction crew last summer.", "correct_answer": "crew" }  ]
+            },
+        ]
+    },
+
+    "The Origins and Evolution of Chinese Pictographs": {
+        "goals": [
+            {
+                "name": "The concept of pictographs",
+                "rule": "Understand the concept of pictographs as the earliest form of Chinese characters. Recognize the relationship between the shape and the meaning of simple pictographs",
+                "test_items": [
+                    {
+                        "question": "Chinese pictographs originated from what kind of observation?",
+                        "correct_answer": "Observations of the natural world"
+                    },
+                    {
+                        "question": "What shape was used to represent the sun in early pictographs?",
+                        "correct_answer": "A circle with a dot in the center"
+                    },
+                    {
+                        "question": "What does the pictograph for 'mountain' resemble?",
+                        "correct_answer": "Three connected peaks"
+                    },
+                    {
+                        "question": "Which pictograph might use a zigzag line?",
+                        "correct_answer": "Lightning"
+                    },
+                    {
+                        "question": "How should a simple pictograph be designed?",
+                        "correct_answer": "Using 1-3 strokes to capture the essence"
+                    },
+                    {
+                        "question": "What was the primary purpose of early pictographs?",
+                        "correct_answer": "To represent objects and their shapes"
+                    },
+                    {
+                        "question": "What feature helps identify a pictograph's meaning?",
+                        "correct_answer": "Its resemblance to a real object"
+                    },
+                    {
+                        "question": "What is the earliest stage of pictographs called?",
+                        "correct_answer": "Pictorial Stage"
+                    },
+                    {
+                        "question": "Which symbol might represent a teardrop?",
+                        "correct_answer": "A curved droplet shape"
+                    },
+                    {
+                        "question": "What is the main learning goal of studying pictographs?",
+                        "correct_answer": "Understanding how shapes relate to meaning"
+                    },
+                    {
+                        "question": "How were pictographs first used in ancient times?",
+                        "correct_answer": "By drawing objects in nature"
+                    },
+                    {
+                        "question": "Which pictograph is likely inspired by something round and bright?",
+                        "correct_answer": "Sun"
+                    },
+                    {
+                        "question": "What is a creative activity suggested in the pictograph lesson?",
+                        "correct_answer": "Create your own character"
+                    },
+                    {
+                        "question": "What aspect should you focus on when drawing a pictograph?",
+                        "correct_answer": "The most distinctive part of the object"
+                    },
+                    {
+                        "question": "Why are pictographs important in Chinese language history?",
+                        "correct_answer": "They are the earliest form of Chinese writing"
+                    }
+                ]
+            },
+
+           {
+                "name": "The history of pictographs",
+                "rule": "....",
+                "test_items": [
+                    {
+                        "question": "During which dynasty was the Oracle Bone Script used?",
+                        "correct_answer": "Late Shang Dynasty"
+                    },
+                    {
+                        "question": "What materials were Oracle Bone Scripts carved on?",
+                        "correct_answer": "Turtle shells and animal bones"
+                    },
+                    {
+                        "question": "Which script was used during the Qin Dynasty?",
+                        "correct_answer": "Small Seal Script"
+                    },
+                    {
+                        "question": "What is a key feature of the Bronze Script?",
+                        "correct_answer": "Smoother and more rounded lines"
+                    },
+                    {
+                        "question": "Which script marked the beginning of modern Chinese characters?",
+                        "correct_answer": "Regular Script"
+                    },
+                    {
+                        "question": "What is a main feature of Clerical Script?",
+                        "correct_answer": "Straight horizontal and vertical lines"
+                    },
+                    {
+                        "question": "Which emperor unified Chinese script during the Qin Dynasty?",
+                        "correct_answer": "Emperor Qin Shi Huang"
+                    },
+                    {
+                        "question": "Which period used bronze vessels for writing pictographs?",
+                        "correct_answer": "Western Zhou to Spring and Autumn Period"
+                    },
+                    {
+                        "question": "What is a major feature of the Regular Script?",
+                        "correct_answer": "Clear and standardized strokes"
+                    },
+                    {
+                        "question": "What kind of lines are typical in Small Seal Script?",
+                        "correct_answer": "Longer, flowing lines"
+                    },
+                    {
+                        "question": "Which script was used during the Han Dynasty?",
+                        "correct_answer": "Clerical Script"
+                    },
+                    {
+                        "question": "What feature gradually faded in the evolution of characters?",
+                        "correct_answer": "Pictorial elements"
+                    },
+                    {
+                        "question": "What kind of script became less pictorial and more symbolic?",
+                        "correct_answer": "Bronze Script"
+                    },
+                    {
+                        "question": "Which script laid the foundation for Regular Script?",
+                        "correct_answer": "Clerical Script"
+                    },
+                    {
+                        "question": "What kind of lines are emphasized in Clerical Script?",
+                        "correct_answer": "Straight lines"
+                    }
+
                 ]
             },
         ]
-    }
+    },
+
 }
