@@ -37,6 +37,8 @@ st.divider()
 if current_index < len(test_items):
     item = test_items[current_index]
     st.subheader(f"Question {current_index + 1} of {len(test_items)}")
+    if "sentence" in item:
+        st.write(item["sentence"])
     user_answer = st.text_input(item["question"], key=f"input_{current_index}")
 
     if st.button("Submit Answer"):
