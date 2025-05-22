@@ -441,4 +441,181 @@ content = {
         ]
     },
 
+    "The Slavery in the U.S.": {
+        "goals": [
+        {
+            "name": "Understanding What Slavery Is and How It Happened",
+            "rule": "Slavery is a system in which people are treated as property. Enslaved people had no freedom, were forced to work without pay, and could be bought or sold. In the U.S., enslaved people were forced to work in different roles: field slaves worked on plantations, house slaves served in the homes, and skilled slaves performed trades like blacksmithing or carpentry. The Triangle Slave Trade was a transatlantic system where Europe sent goods to Africa, Africa sent enslaved people to the Americas (via the Middle Passage), and the Americas sent raw materials back to Europe. The Middle Passage was a brutal sea journey for captured Africans, marked by overcrowding, disease, abuse, and high death rates. European colonizers justified slavery using racism and religion, claiming Africans were inferior and destined to serve. Slavery was profitable: plantations made money from crops like cotton, tobacco, sugar, and rice using unpaid labor. African kingdoms were sometimes involved in the trade by selling prisoners of war or enemies to European traders. Enslaved people were captured in Africa through raids or sold by local leaders, then transported in horrific conditions.",
+            "test_items": [
+            {
+                "question": "What is the definition of slavery?",
+                "correct_answer": "Slavery is when people are treated as property and forced to work without pay."
+            },
+            {
+                "question": "Name at least two different types of slavery that existed in the U.S.",
+                "correct_answer": "Types included field slaves, house slaves, and skilled slaves with specific trades or duties."
+            },
+            {
+                "question": "What was the Triangle Slave Trade?",
+                "correct_answer": "The Triangle Slave Trade involved trading goods and enslaved Africans between Europe, Africa, and America."
+            },
+            {
+                "question": "What was the Middle Passage?",
+                "correct_answer": "The Middle Passage was the horrific ocean journey African slaves endured from Africa to America."
+            },
+            {
+                "question": "Which three regions were connected by the Triangle Slave Trade?",
+                "correct_answer": "Europe, Africa, and the Americas were the main regions in the Triangle Slave Trade."
+            },
+            {
+                "question": "Why was slavery considered economically beneficial to plantation owners?",
+                "correct_answer": "Slavery provided cheap labor that helped plantation owners and traders build massive wealth quickly."
+            },
+            {
+                "question": "How did European colonizers justify the enslavement of Africans?",
+                "correct_answer": "Colonizers used racist beliefs and religious excuses to justify enslaving African people."
+            },
+            {
+                "question": "What crops were commonly produced using slave labor in the southern U.S.?",
+                "correct_answer": "Enslaved people mainly worked in cotton, tobacco, sugar, and rice plantations in the South."
+            },
+            {
+                "question": "How were slaves captured and transported to America?",
+                "correct_answer": "Africans were often captured in raids or bought from local leaders, then shipped away."
+            },
+            {
+                "question": "What role did African leaders or kingdoms play in the slave trade?",
+                "correct_answer": "Some African leaders sold prisoners of war or rivals to European slave traders."
+            }
+            ]
+        },
+        {
+            "name": "Timeline of Important Events",
+            "rule": "The Underground Railroad was not an actual railroad, but a secret system of routes and safe houses that helped enslaved people escape to free states or Canada. Harriet Tubman, once enslaved, became a key leader of the Underground Railroad, making many trips to rescue others. The Civil War (1861–1865) was mainly caused by disagreements over slavery, states’ rights, and economic differences between the North and South. The Emancipation Proclamation (1863) was issued by Abraham Lincoln to free enslaved people in Confederate states, though not all were freed immediately. The 13th Amendment to the U.S. Constitution, ratified in 1865, officially abolished slavery in all states. After slavery ended, Jim Crow Laws enforced racial segregation, especially in Southern states. The Freedmen’s Bureau was a government agency created to support newly freed slaves with education, legal help, food, and jobs. Although slavery legally ended, Black Americans continued to face systemic inequality and violence for generations.",
+            "test_items": [
+            {
+                "question": "What was the Underground Railroad?",
+                "correct_answer": "The Underground Railroad was a secret escape network for slaves fleeing to freedom."
+            },
+            {
+                "question": "Who was Harriet Tubman and what role did she play in the Underground Railroad?",
+                "correct_answer": "Harriet Tubman was a former slave who guided others safely through the Underground Railroad."
+            },
+            {
+                "question": "What were the causes of the Civil War?",
+                "correct_answer": "The Civil War started over slavery, state rights, and economic differences between North and South."
+            },
+            {
+                "question": "What were the outcomes of the Civil War for enslaved people?",
+                "correct_answer": "The Civil War ended slavery and gave Black people freedom but not equal rights."
+            },
+            {
+                "question": "What were the Jim Crow Laws?",
+                "correct_answer": "Jim Crow Laws enforced segregation and unequal treatment of Black Americans after slavery ended."
+            },
+            {
+                "question": "How did the Freedmen's Bureau support newly freed slaves?",
+                "correct_answer": "The Freedmen's Bureau helped freed slaves by providing education, jobs, and legal aid."
+            },
+            {
+                "question": "What year did slavery officially end in the United States?",
+                "correct_answer": "Slavery officially ended in 1865 with the ratification of the 13th Amendment."
+            },
+            {
+                "question": "What was the Emancipation Proclamation?",
+                "correct_answer": "The Emancipation Proclamation freed slaves in Confederate states during the Civil War."
+            },
+            {
+                "question": "Who was Abraham Lincoln and how did he influence the abolition of slavery?",
+                "correct_answer": "Abraham Lincoln led the nation during the Civil War and pushed for ending slavery."
+            },
+            {
+                "question": "What was the significance of the 13th Amendment?",
+                "correct_answer": "The 13th Amendment abolished slavery in all U.S. states, legally freeing all enslaved people."
+            }
+            ]
+        },
+        {
+            "name": "Impact of Slavery on Different Parts of Society",
+            "rule": "Slavery created enormous wealth for Southern plantation owners, who didn’t have to pay for labor. Living conditions for enslaved people were extremely poor — they lived in overcrowded cabins, were poorly fed, and lacked medical care. Slavery powered not just agriculture but also the U.S. economy more broadly, including export industries. The North benefited from slavery too — industries like textiles depended on Southern cotton, and banks invested in the slave economy. Other industries connected to slavery included shipping, which transported goods, and banking, which financed plantations. Enslaved people resisted in many ways: by working slowly, escaping, or engaging in rebellions or sabotage. The North and South were divided: the South relied heavily on slavery, while the North was more industrial and had mostly outlawed slavery. The abolition of slavery caused a major economic shock in the South, where the economy had been built on forced labor. Views on slavery differed: most Northerners opposed it, while many Southerners supported it; even some anti-slavery Northerners still held racist views or feared competition from freed slaves.",
+            "test_items": [
+            {
+                "question": "How did slavery benefit wealthy landowners in the South?",
+                "correct_answer": "Wealthy Southerners gained huge profits from free labor by enslaved African Americans."
+            },
+            {
+                "question": "What were living conditions like for enslaved people?",
+                "correct_answer": "Enslaved people lived in poor, crowded cabins with little food and no medical care."
+            },
+            {
+                "question": "How did slavery affect the U.S. economy overall?",
+                "correct_answer": "Slavery powered the economy, especially plantation agriculture, exports, and related industries like shipping."
+            },
+            {
+                "question": "How did Northern states benefit indirectly from slavery?",
+                "correct_answer": "Northern factories used cheap Southern cotton, benefiting indirectly from slavery's profits."
+            },
+            {
+                "question": "What industries outside agriculture were connected to slavery?",
+                "correct_answer": "Industries like textiles, shipping, and banking profited by processing or transporting slave-grown goods."
+            },
+            {
+                "question": "How did enslaved people resist or rebel against their conditions?",
+                "correct_answer": "Some enslaved people resisted by working slowly, escaping, or organizing rebellions and sabotage."
+            },
+            {
+                "question": "What were the major differences between the North and South in regard to slavery?",
+                "correct_answer": "The South depended on slavery, while the North had more free labor and industry."
+            },
+            {
+                "question": "How did the abolition of slavery affect the Southern economy?",
+                "correct_answer": "Ending slavery led to economic collapse for many Southern landowners and plantations."
+            },
+            {
+                "question": "How did public opinion on slavery vary across different regions?",
+                "correct_answer": "People in the North opposed slavery, but many also feared economic competition from freed slaves."
+            }
+            ]
+        },
+        {
+            "name": "How Slavery Still Affects the USA Today",
+            "rule": "Systemic racism means that racial discrimination is built into institutions like education, employment, housing, and the justice system. Today, Black Americans face higher unemployment, lower wages, and fewer job opportunities than white Americans due to lingering racial inequality. Schools in predominantly Black or low-income neighborhoods often receive less funding, resulting in fewer resources and opportunities. There is a significant racial wealth gap: white families tend to have much more wealth than Black families, even today. The legal system has patterns of discrimination: Black people often receive harsher sentences for the same crimes compared to white people. Living conditions in urban areas are unequal — poorer communities (often Black or Latino) face limited access to healthcare, housing, and quality services. The school-to-prison pipeline describes how school policies (like harsh punishments and suspensions) disproportionately push students of color into the criminal justice system. Modern slavery still exists in forms like human trafficking, forced labor, and unpaid or underpaid prison labor, often hidden from public view.",
+            "test_items": [
+            {
+                "question": "What is systemic racism?",
+                "correct_answer": "Systemic racism means unfair treatment is built into institutions like schools, jobs, and policing."
+            },
+            {
+                "question": "How do employment opportunities differ today for Black Americans compared to white Americans?",
+                "correct_answer": "Black Americans often face higher unemployment and lower pay due to racial discrimination."
+            },
+            {
+                "question": "What role does race play in access to education?",
+                "correct_answer": "Schools in Black neighborhoods often receive less funding and offer fewer opportunities."
+            },
+            {
+                "question": "What evidence exists of continued economic inequality along racial lines?",
+                "correct_answer": "Racial inequality shows in lower wages, wealth gaps, and higher poverty rates among minorities."
+            },
+            {
+                "question": "In what ways does discrimination persist in the legal system?",
+                "correct_answer": "The legal system often gives harsher punishments to Black people for the same crimes."
+            },
+            {
+                "question": "How do living conditions differ across racial and socioeconomic lines in urban areas?",
+                "correct_answer": "Poorer areas, often Black or Latino, face worse housing, healthcare, and public services."
+            },
+            {
+                "question": "What is meant by the term 'school-to-prison pipeline'?",
+                "correct_answer": "The school-to-prison pipeline pushes Black youth out of education and into the justice system."
+            },
+            {
+                "question": "What are modern examples of human trafficking or forced labor in the U.S.?",
+                "correct_answer": "Modern slavery includes human trafficking, forced labor, and prison work with little to no pay."
+            }
+            ]
+        }
+    ]
+    }
+
 }
