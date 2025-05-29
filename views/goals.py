@@ -28,4 +28,4 @@ if st.session_state.topic:
 
     if st.session_state.goal:
         st.success(f"You're ready! ✅\n\nTopic: **{st.session_state.topic}**\nGoal: **{st.session_state.goal}**")
-        st.switch_page("views/assessment.py")
+        st.switch_page("views/rules.py")

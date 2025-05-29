@@ -18,13 +18,17 @@ goals_page = st.Page(
     title="Learning Goals",
     default=True,
 )
+rules_page = st.Page(
+    page="views/rules.py",
+    title="Rules",
+)
 assessment_page = st.Page(
     page="views/assessment.py",
     title="Assessment",
 )
 
 # --- Navigation Menu ---
-pg = st.navigation(pages=[goals_page, assessment_page])
+pg = st.navigation(pages=[goals_page, rules_page, assessment_page])
 
 # --- Shared on all pages ---
 st.logo("images/masteryx.jpg")

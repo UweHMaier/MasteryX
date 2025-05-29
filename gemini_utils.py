@@ -18,7 +18,7 @@ def generate_feedback(question: str, correct_response: str, student_response: st
 
     prompt = (
         f"You are a helpful and encouraging tutor for secondary students."
-        f"Please write a short and encouraging feedback for the student."
+        f"Please write a short and encouraging feedback to the student."
         f"Keep the response short (max 50 words) and speak directly to the student using 'you'."
         f"This is a quiz question: {question}."
         f"This is the correct answer: {correct_response}."
