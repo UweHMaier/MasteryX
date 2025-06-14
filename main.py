@@ -1,16 +1,30 @@
 import streamlit as st
 import uuid
-#from firebase_config import database_ref
+import pandas as pd
+
+# Import topic, learning goals and quizitems from google sheets
+sheet_url = "https://docs.google.com/spreadsheets/d/1oX82oxkG0TMFHSF0VsYt_7Jjlmd1zc7YPWqWNqhR6q8/export?format=csv"
+try:
+    df = pd.read_csv(sheet_url, quotechar='"', on_bad_lines='skip')
+except Exception as e:
+    st.error("Failed to load data from Google Sheets.")
+    st.stop()
+
 
 # --- Set page config ---
 st.set_page_config(page_title="MasteryX", layout="centered")
 
-# --- Init state for one session ---
-if "session_id" not in st.session_state:
-    st.session_state["session_id"] = str(uuid.uuid4())
+# -- Init session state ---
+for key, default in {
+    "user": "Demo-User",
+    "session_id": str(uuid.uuid4()),
+    "topic": None,
+    "goal": None,
+    "content": df,
+}.items():
+    if key not in st.session_state:
+        st.session_state[key] = default
 
-if "user" not in st.session_state:
-    st.session_state["user"] = "Demo-User"
 
 # --- Page setup ---
 goals_page = st.Page(

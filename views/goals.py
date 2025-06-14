@@ -1,13 +1,9 @@
 import streamlit as st
-from content import content
 
-# -- Init session state ---
-for key, default in {
-    "topic": None,
-    "goal": None,
-}.items():
-    if key not in st.session_state:
-        st.session_state[key] = default
+# --- Safety Check ---
+if "content" not in st.session_state:
+    st.error("Content not found. Please restart the app.")
+    st.stop()
 
 # --- Layout ---
 col1, col2 = st.columns([1, 8])
@@ -19,13 +15,37 @@ with col2:
 st.subheader("Set your learning goal!", divider="blue")
 
 # --- Topic selection ---
-st.session_state.topic = st.selectbox("Choose your topic:", [""] + list(content.keys()))
+df = st.session_state["content"]
+topics = df["topic"].dropna().unique().tolist()
 
-if st.session_state.topic:
-    goals_list = content[st.session_state.topic]["goals"]
-    goal_names = [goal["name"] for goal in goals_list]
-    st.session_state.goal = st.selectbox("Select a learning goal:", [""] + goal_names)
+# Detect topic change and reset goal
+current_topic = st.session_state.get("topic", "")
+selected_topic = st.selectbox(
+    "Choose a topic:",
+    [""] + topics,
+    index=(topics.index(current_topic) + 1) if current_topic in topics else 0
+)
 
-    if st.session_state.goal:
-        st.success(f"You're ready! ✅\n\nTopic: **{st.session_state.topic}**\nGoal: **{st.session_state.goal}**")
+# If topic changed, reset goal
+if selected_topic != current_topic:
+    st.session_state["goal"] = None
+
+st.session_state["topic"] = selected_topic
+
+# --- Learning goal selection ---
+if selected_topic:
+    goals = (
+        df[df["topic"] == selected_topic]["goal"]
+        .dropna()
+        .unique()
+        .tolist()
+    )
+
+    selected_goal = st.selectbox("Choose a learning goal:", [""] + goals)
+
+    if selected_goal:
+        st.session_state["goal"] = selected_goal
+        st.success(
+            f"You're ready! ✅\n\nTopic: **{st.session_state.topic}**\nGoal: **{st.session_state.goal}**"
+        )
         st.switch_page("views/rules.py")
