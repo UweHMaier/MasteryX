@@ -16,12 +16,6 @@ df_quizitems = st.session_state["df_quizitems"]
 filtered_df = df_quizitems[(df_quizitems["topic"] == selected_topic) & (df_quizitems["goal"] == selected_goal)]
 test_items = filtered_df.to_dict("records")
 
-# Ensure there are at least 3 items to sample
-if len(test_items) >= 3:
-    selected_items = random.sample(test_items, 3)
-else:
-    selected_items = test_items  # If fewer than 3, take all available
-
 
 # Initialize state
 for key, default in {
@@ -35,6 +29,16 @@ for key, default in {
     if key not in st.session_state:
         st.session_state[key] = default
 
+
+# Random sampling of 3 items
+if "selected_items" not in st.session_state:
+    # Sample only once and store in session_state
+    if len(test_items) >= 3:
+        st.session_state.selected_items = random.sample(test_items, 3)
+    else:
+        st.session_state.selected_items = test_items
+
+selected_items = st.session_state.selected_items
 current_index = st.session_state.question_index
 
 # If assessment is ongoing
@@ -53,7 +57,8 @@ if current_index < len(selected_items):
             text = item["text"],
             question=item["question"],
             correct_response=item["correct_answer"],
-            student_response=user_answer
+            student_response=user_answer,
+            feedback_prompt=item["feedback_prompt"]
         )
         st.session_state.last_feedback = feedback
         st.session_state.last_correct = item["correct_answer"]
@@ -73,7 +78,16 @@ if current_index < len(selected_items):
 else:
     st.success("🎉 Assessment complete! Well done.")
     if st.button("Restart"):
-        for key in ["question_index", "show_feedback", "last_feedback", "last_correct", "last_question", "last_user_answer"]:
+        for key in [
+            "question_index",
+            "show_feedback",
+            "last_feedback",
+            "last_correct",
+            "last_question",
+            "last_user_answer",
+            "selected_items",
+        ]:
             if key in st.session_state:
                 del st.session_state[key]
         st.rerun()
+

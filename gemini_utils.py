@@ -14,7 +14,7 @@ model = genai.GenerativeModel("gemini-1.5-flash")
 
 
 
-def generate_feedback(text: str, question: str, correct_response: str, student_response: str) -> str:
+def generate_feedback(text: str, question: str, correct_response: str, student_response: str, feedback_prompt: str) -> str:
 
     prompt = (
         f"You are a helpful and encouraging tutor for secondary students."
@@ -24,6 +24,7 @@ def generate_feedback(text: str, question: str, correct_response: str, student_r
         f"This is optional text: {text}."
         f"This is the correct answer: {correct_response}."
         f"This is the student answer: {student_response}."
+        f"This is additional information how to evaluate the student answer: {feedback_prompt}."
         f"Do not tell the correct answer. Encourage the student to improve his answer an resubmit it."
     )
 

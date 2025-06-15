@@ -1,16 +1,20 @@
 import streamlit as st
 
-# Initialize state for quiz if user skips quiz and chooses new goal
-for key, default in {
-    "question_index": 0,
-    "show_feedback": False,
-    "last_feedback": "",
-    "last_correct": "",
-    "last_question": "",
-    "last_user_answer": "",
-}.items():
-    if key not in st.session_state:
-        st.session_state[key] = default
+# Delete state for quiz if user skips quiz and chooses new goal
+for key in [
+    "topic",
+    "goal",
+    "question_index",
+    "show_feedback",
+    "last_feedback",
+    "last_correct",
+    "last_question",
+    "last_user_answer",
+    "selected_items",
+]:
+    if key in st.session_state:
+        del st.session_state[key]
+
 
 
 # --- Layout ---
