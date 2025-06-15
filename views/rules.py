@@ -1,5 +1,4 @@
 import streamlit as st
-from content import content
 
 # Validate topic and goal selection
 if not st.session_state.get("topic") or not st.session_state.get("goal"):
@@ -8,14 +7,14 @@ if not st.session_state.get("topic") or not st.session_state.get("goal"):
 
 # Fetch selected goal
 selected_topic = st.session_state["topic"]
-selected_goal_name = st.session_state["goal"]
-goal_data = next(goal for goal in content[selected_topic]["goals"] if goal["name"] == selected_goal_name)
-test_items = goal_data["test_items"]
+selected_goal = st.session_state["goal"]
+df_rules = st.session_state["df_rules"]
+rule = df_rules.loc[(df_rules["topic"] == selected_topic) & (df_rules["goal"] == selected_goal), "rule"].values[0]
 
 # UI
 st.title(f"Topic: {selected_topic}")
-st.write(f"Learning goal: {selected_goal_name}")
-st.markdown(f"**Rule:** {goal_data['rule']}")
+st.write(f"Learning goal: {selected_goal}")
+st.markdown(f"{rule}")
 
 # Button to assessment
 if st.button("Go to the quiz"):

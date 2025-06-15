@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 from gemini_utils import generate_feedback
+import random
 
 
 # Validate topic and goal selection
@@ -11,9 +12,16 @@ if not st.session_state.get("topic") or not st.session_state.get("goal"):
 # Fetch selected goal and content
 selected_topic = st.session_state["topic"]
 selected_goal = st.session_state["goal"]
-df = st.session_state["content"]
-filtered_df = df[(df["topic"] == selected_topic) & (df["goal"] == selected_goal)]
+df_quizitems = st.session_state["df_quizitems"]
+filtered_df = df_quizitems[(df_quizitems["topic"] == selected_topic) & (df_quizitems["goal"] == selected_goal)]
 test_items = filtered_df.to_dict("records")
+
+# Ensure there are at least 3 items to sample
+if len(test_items) >= 3:
+    selected_items = random.sample(test_items, 3)
+else:
+    selected_items = test_items  # If fewer than 3, take all available
+
 
 # Initialize state
 for key, default in {
@@ -30,10 +38,10 @@ for key, default in {
 current_index = st.session_state.question_index
 
 # If assessment is ongoing
-if current_index < len(test_items):
-    item = test_items[current_index]
-    st.subheader(f"{selected_goal}: Question {current_index + 1} of {len(test_items)}")
-    if "text" in item:
+if current_index < len(selected_items):
+    item = selected_items[current_index]
+    st.subheader(f"{selected_goal}: Question {current_index + 1} of {len(selected_items)}")
+    if "text" in item and pd.notna(item["text"]):
         st.write(item["text"])
     else:
         # kein Text, aber dann als leeres Feld

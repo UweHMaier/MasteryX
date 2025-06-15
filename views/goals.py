@@ -1,9 +1,17 @@
 import streamlit as st
 
-# --- Safety Check ---
-if "content" not in st.session_state:
-    st.error("Content not found. Please restart the app.")
-    st.stop()
+# Initialize state for quiz if user skips quiz and chooses new goal
+for key, default in {
+    "question_index": 0,
+    "show_feedback": False,
+    "last_feedback": "",
+    "last_correct": "",
+    "last_question": "",
+    "last_user_answer": "",
+}.items():
+    if key not in st.session_state:
+        st.session_state[key] = default
+
 
 # --- Layout ---
 col1, col2 = st.columns([1, 8])
@@ -15,27 +23,21 @@ with col2:
 st.subheader("Set your learning goal!", divider="blue")
 
 # --- Topic selection ---
-df = st.session_state["content"]
-topics = df["topic"].dropna().unique().tolist()
+df_quizitems = st.session_state["df_quizitems"]
+topics = df_quizitems["topic"].dropna().unique().tolist()
 
 # Detect topic change and reset goal
 current_topic = st.session_state.get("topic", "")
-selected_topic = st.selectbox(
-    "Choose a topic:",
-    [""] + topics,
-    index=(topics.index(current_topic) + 1) if current_topic in topics else 0
-)
-
+selected_topic = st.pills("Topic", options=topics, selection_mode="single")
 # If topic changed, reset goal
 if selected_topic != current_topic:
     st.session_state["goal"] = None
-
 st.session_state["topic"] = selected_topic
 
 # --- Learning goal selection ---
 if selected_topic:
     goals = (
-        df[df["topic"] == selected_topic]["goal"]
+        df_quizitems[df_quizitems["topic"] == selected_topic]["goal"]
         .dropna()
         .unique()
         .tolist()

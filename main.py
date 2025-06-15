@@ -3,9 +3,17 @@ import uuid
 import pandas as pd
 
 # Import topic, learning goals and quizitems from google sheets
-sheet_url = "https://docs.google.com/spreadsheets/d/1oX82oxkG0TMFHSF0VsYt_7Jjlmd1zc7YPWqWNqhR6q8/export?format=csv"
+sheet_quizitems = "https://docs.google.com/spreadsheets/d/1oX82oxkG0TMFHSF0VsYt_7Jjlmd1zc7YPWqWNqhR6q8/export?format=csv"
 try:
-    df = pd.read_csv(sheet_url, quotechar='"', on_bad_lines='skip')
+    df_quizitems = pd.read_csv(sheet_quizitems, quotechar='"', on_bad_lines='skip')
+except Exception as e:
+    st.error("Failed to load data from Google Sheets.")
+    st.stop()
+
+# Import topic, goals, and rules from google sheets
+sheet_rules = "https://docs.google.com/spreadsheets/d/1Bhi8indbSHAtedAjxqHD0WqE9FJM0EOcukOyypBvSwA/export?format=csv"
+try:
+    df_rules = pd.read_csv(sheet_rules, quotechar='"', on_bad_lines='skip')
 except Exception as e:
     st.error("Failed to load data from Google Sheets.")
     st.stop()
@@ -20,7 +28,8 @@ for key, default in {
     "session_id": str(uuid.uuid4()),
     "topic": None,
     "goal": None,
-    "content": df,
+    "df_quizitems": df_quizitems,
+    "df_rules": df_rules,
 }.items():
     if key not in st.session_state:
         st.session_state[key] = default
@@ -46,9 +55,6 @@ pg = st.navigation(pages=[goals_page, rules_page, assessment_page])
 
 # --- Shared on all pages ---
 st.logo("images/masteryx.jpg")
-st.sidebar.markdown("### MasteryX-APP")
-st.sidebar.markdown(f"👋 Hello {st.session_state['user']}!")
-st.sidebar.markdown(f"🆔 Session-ID: `{st.session_state['session_id']}`")
 
 # --- Run the selected page ---
 pg.run()
