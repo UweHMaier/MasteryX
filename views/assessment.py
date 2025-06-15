@@ -44,17 +44,21 @@ current_index = st.session_state.question_index
 # If assessment is ongoing
 if current_index < len(selected_items):
     item = selected_items[current_index]
-    st.subheader(f"{selected_goal}: Question {current_index + 1} of {len(selected_items)}")
-    if "text" in item and pd.notna(item["text"]):
-        st.write(item["text"])
-    else:
-        # kein Text, aber dann als leeres Feld
-        item["text"] = ""
-    user_answer = st.text_input(item["question"], key=f"input_{current_index}")
+    st.subheader(f"{selected_goal} ({current_index + 1}/{len(selected_items)})")
 
-    if st.button("Submit Answer"):
+    # Iteminstruktion mit Text und Frage
+    if "text" in item and pd.notna(item["text"]):
+        st.info(item["text"])
+    else:
+        item["text"] = ""
+    st.warning(item["question"])
+    # TextInput bleibt immer sichtbar
+    user_answer = st.text_input("Enter your answer here:", key=f"input_{current_index}")
+
+    # Funktion zum Absenden der Antwort und Generieren von Feedback
+    def submit_answer():
         feedback = generate_feedback(
-            text = item["text"],
+            text=item["text"],
             question=item["question"],
             correct_response=item["correct_answer"],
             student_response=user_answer,
@@ -62,17 +66,27 @@ if current_index < len(selected_items):
         )
         st.session_state.last_feedback = feedback
         st.session_state.last_correct = item["correct_answer"]
-        st.session_state.last_text = item["text"]
-        st.session_state.last_question = item["question"]
         st.session_state.last_user_answer = user_answer
         st.session_state.show_feedback = True
+        st.rerun()
 
-    if st.session_state.show_feedback:
+    # Buttons je nach Zustand
+    if not st.session_state.show_feedback:
+        if st.button("Submit Answer"):
+            submit_answer()
+    else:
+        # Feedback anzeigen
         st.success(st.session_state.last_feedback)
-        if st.button("Next Question"):
-            st.session_state.question_index += 1
-            st.session_state.show_feedback = False
-            st.rerun()
+        # Zwei Optionen: nochmal absenden oder weiter
+        col1, col2 = st.columns(2)
+        with col1:
+            if st.button("Resubmit answer"):
+                submit_answer()
+        with col2:
+            if st.button("Next"):
+                st.session_state.question_index += 1
+                st.session_state.show_feedback = False
+                st.rerun()
 
 # If all questions completed
 else:
