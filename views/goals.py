@@ -1,21 +1,14 @@
 import streamlit as st
 
-# Delete state for quiz if user skips quiz and chooses new goal
-for key in [
-    "topic",
-    "goal",
-    "question_index",
-    "show_feedback",
-    "last_feedback",
-    "last_correct",
-    "last_question",
-    "last_user_answer",
-    "selected_items",
-]:
-    if key in st.session_state:
-        del st.session_state[key]
-
-
+# --- Detect first entry to this page and reset ---
+if "first_visit_to_selection" not in st.session_state:
+    for key in [
+        "topic", "goal", "question_index", "show_feedback",
+        "last_feedback", "last_correct", "last_question",
+        "last_user_answer", "selected_items"
+    ]:
+        st.session_state.pop(key, None)
+    st.session_state["first_visit_to_selection"] = True
 
 # --- Layout ---
 col1, col2 = st.columns([1, 8])
@@ -26,19 +19,28 @@ with col2:
 
 st.subheader("Set your learning goal!", divider="blue")
 
+# Dynamische Statusanzeige mit Topic und Goal
+if "topic" in st.session_state and st.session_state["topic"]:
+    message = f"✅ Topic: {st.session_state['topic']}"
+    if "goal" in st.session_state and st.session_state["goal"]:
+        message += f"\n✅ Goal: {st.session_state['goal']}"
+    st.success(message)
+
 # --- Topic selection ---
 df_quizitems = st.session_state["df_quizitems"]
 topics = df_quizitems["topic"].dropna().unique().tolist()
 
-# Detect topic change and reset goal
-current_topic = st.session_state.get("topic", "")
-selected_topic = st.pills("Topic", options=topics, selection_mode="single")
-# If topic changed, reset goal
-if selected_topic != current_topic:
-    st.session_state["goal"] = None
-st.session_state["topic"] = selected_topic
+# Wenn noch kein Thema gewählt wurde → Pillen anzeigen
+if "topic" not in st.session_state or not st.session_state["topic"]:
+    selected_topic = st.pills("Select your topic", options=topics, selection_mode="single")
+    if selected_topic:
+        st.session_state["topic"] = selected_topic
+        st.rerun()  # Seite neu laden, um Thema anzuzeigen
+else:
+    selected_topic = st.session_state["topic"]
 
-# --- Learning goal selection ---
+
+# --- Goal selection ---
 if selected_topic:
     goals = (
         df_quizitems[df_quizitems["topic"] == selected_topic]["goal"]
@@ -47,11 +49,14 @@ if selected_topic:
         .tolist()
     )
 
-    selected_goal = st.selectbox("Choose a learning goal:", [""] + goals)
+    # Nur anzeigen, wenn noch kein Ziel gewählt
+    if "goal" not in st.session_state or not st.session_state["goal"]:
+        selected_goal = st.pills("Select goal", options=goals, selection_mode="single")
+        if selected_goal:
+            st.session_state["goal"] = selected_goal
+            st.rerun()
+    else:
+        if st.button("Read the Rules!"):
+            st.session_state.pop("first_visit_to_selection", None)  # ✅ clear reset flag
+            st.switch_page("views/rules.py")
 
-    if selected_goal:
-        st.session_state["goal"] = selected_goal
-        st.success(
-            f"You're ready! ✅\n\nTopic: **{st.session_state.topic}**\nGoal: **{st.session_state.goal}**"
-        )
-        st.switch_page("views/rules.py")

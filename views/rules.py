@@ -12,9 +12,8 @@ df_rules = st.session_state["df_rules"]
 rule = df_rules.loc[(df_rules["topic"] == selected_topic) & (df_rules["goal"] == selected_goal), "rule"].values[0]
 
 # UI
-st.title(f"Topic: {selected_topic}")
-st.write(f"Learning goal: {selected_goal}")
-st.markdown(f"{rule}")
+st.subheader(f"{selected_topic}: {selected_goal}")
+st.info(f"{rule}")
 
 # Button to assessment
 if st.button("Go to the quiz"):

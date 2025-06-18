@@ -44,14 +44,23 @@ current_index = st.session_state.question_index
 # If assessment is ongoing
 if current_index < len(selected_items):
     item = selected_items[current_index]
-    st.subheader(f"{selected_goal} ({current_index + 1}/{len(selected_items)})")
+    st.subheader(f"{selected_goal} ({current_index + 1}/{len(selected_items)})", divider="blue")
 
-    # Iteminstruktion mit Text und Frage
-    if "text" in item and pd.notna(item["text"]):
+    # Show image if available
+    if "image" in item and pd.notna(item["image"]) and item["image"].strip():
+        st.image(item["image"], width=300)
+
+    # Show additional instruction text if available
+    if "text" in item and pd.notna(item["text"]) and item["text"].strip():
         st.info(item["text"])
+
+    # Always show the question
+    if "question" in item and pd.notna(item["question"]) and item["question"].strip():
+        st.markdown(f"**{item['question']}**")
     else:
-        item["text"] = ""
-    st.warning(item["question"])
+        st.warning("⚠️ No question text found for this item.")
+
+
     # TextInput bleibt immer sichtbar
     user_answer = st.text_input("Enter your answer here:", key=f"input_{current_index}")
 
