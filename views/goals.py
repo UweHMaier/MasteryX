@@ -27,8 +27,8 @@ if "topic" in st.session_state and st.session_state["topic"]:
     st.success(message)
 
 # --- Topic selection ---
-df_quizitems = st.session_state["df_quizitems"]
-topics = df_quizitems["topic"].dropna().unique().tolist()
+df_rules = st.session_state["df_rules"]
+topics = df_rules["topic"].dropna().unique().tolist()
 
 # Wenn noch kein Thema gewählt wurde → Pillen anzeigen
 if "topic" not in st.session_state or not st.session_state["topic"]:
@@ -42,12 +42,7 @@ else:
 
 # --- Goal selection ---
 if selected_topic:
-    goals = (
-        df_quizitems[df_quizitems["topic"] == selected_topic]["goal"]
-        .dropna()
-        .unique()
-        .tolist()
-    )
+    goals = (df_rules[df_rules["topic"] == selected_topic]["goal"].dropna().unique().tolist())
 
     # Nur anzeigen, wenn noch kein Ziel gewählt
     if "goal" not in st.session_state or not st.session_state["goal"]:
