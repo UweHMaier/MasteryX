@@ -25,8 +25,10 @@ def generate_feedback(text: str, question: str, correct_response: str, student_r
         f"This is the correct answer: {correct_response}."
         f"This is the student answer: {student_response}."
         f"This is additional information how to evaluate the student answer: {feedback_prompt}."
-        f"Do not tell the correct answer. Encourage the student to improve his answer an resubmit it."
+        f"Do not tell the correct answer."
     )
+
+    print(prompt)
 
     try:
         model = genai.GenerativeModel("gemini-1.5-flash")

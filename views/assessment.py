@@ -20,7 +20,6 @@ df_quizitems = st.session_state["df_quizitems"]
 filtered_df = df_quizitems[(df_quizitems["topic"] == selected_topic) & (df_quizitems["goal"] == selected_goal)]
 test_items = filtered_df.to_dict("records")
 
-
 # Initialize state
 for key, default in {
     "question_index": 0,
@@ -66,7 +65,7 @@ if current_index < len(selected_items):
 
 
     # TextInput bleibt immer sichtbar
-    user_answer = st.text_input("Enter your answer here:", key=f"input_{current_index}")
+    user_answer = st.text_area("Enter your answer here:", height=100, key=f"input_{current_index}")
 
     # Funktion zum Absenden der Antwort und Generieren von Feedback
     def submit_answer():

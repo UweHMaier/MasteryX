@@ -1,4 +1,19 @@
 import streamlit as st
+from PIL import Image
+import requests
+import streamlit as st
+
+# iamge ID
+#file_id = "1Q9XgaKTWu06D2O92WumkTr_tTlu8pLK-"  # replace with your real ID
+
+# URL
+#url = f"https://drive.google.com/uc?export=view&id={file_id}"
+
+#response = requests.get(url)
+#st.image(response.content)
+
+
+
 
 # --- Detect first entry to this page and reset ---
 if "first_visit_to_selection" not in st.session_state:

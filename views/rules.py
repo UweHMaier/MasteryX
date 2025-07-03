@@ -21,9 +21,8 @@ image = df_rules.loc[(df_rules["topic"] == selected_topic) & (df_rules["goal"] =
 st.subheader(f"{selected_topic}: {selected_goal}")
 # Show image if available
 if image == image:
+     # is true when not nan
      st.image(image, width=500)
-else:
-     st.write("kein Bild")
 
 st.info(f"{rule}")
 
