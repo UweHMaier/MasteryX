@@ -15,7 +15,6 @@ model = genai.GenerativeModel("gemini-1.5-flash")
 
 
 def generate_feedback(text: str, question: str, correct_response: str, student_response: str, feedback_prompt: str) -> str:
-
     prompt = (
         f"You are a helpful and encouraging tutor for secondary students."
         f"Please write a short and encouraging feedback to the student."
@@ -28,7 +27,28 @@ def generate_feedback(text: str, question: str, correct_response: str, student_r
         f"Do not tell the correct answer."
     )
 
-    print(prompt)
+    try:
+        model = genai.GenerativeModel("gemini-1.5-flash")
+        response = model.generate_content(prompt)
+        return response.text.strip()
+
+    except Exception as e:
+        error_message = str(e).lower()
+        if "quota" in error_message or "rate limit" in error_message:
+            st.warning("🚨 Too many requests. Please wait a few seconds and try again.")
+        else:
+            st.error(f"Gemini API error: {e}")
+        return None
+
+
+
+def generate_summary(feedbacks: list) -> str:
+    prompt = (
+        f"You are a helpful and encouraging tutor for secondary students."
+        f"Please write a short and encouraging summary feedback to the student."
+        f"The student completed 3 questions with these feedbacks: {feedbacks}."
+        f"The summary feedback should have not more than 50 words."
+    )
 
     try:
         model = genai.GenerativeModel("gemini-1.5-flash")

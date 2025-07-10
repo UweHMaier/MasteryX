@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from gemini_utils import generate_feedback
+from gemini_utils import generate_feedback, generate_summary
 import random
 
 
@@ -28,6 +28,7 @@ for key, default in {
     "last_correct": "",
     "last_question": "",
     "last_user_answer": "",
+    "allfeedbacks": [],
 }.items():
     if key not in st.session_state:
         st.session_state[key] = default
@@ -80,6 +81,7 @@ if current_index < len(selected_items):
         st.session_state.last_correct = item["correct_answer"]
         st.session_state.last_user_answer = user_answer
         st.session_state.show_feedback = True
+        st.session_state.allfeedbacks.append(feedback)
         st.rerun()
 
     # Buttons je nach Zustand
@@ -103,6 +105,8 @@ if current_index < len(selected_items):
 # If all questions completed
 else:
     st.success("🎉 Assessment complete! Well done.")
+    summary = generate_summary(st.session_state.allfeedbacks)
+    st.info(summary)
     if st.button("Restart"):
         for key in [
             "question_index",
@@ -112,6 +116,7 @@ else:
             "last_question",
             "last_user_answer",
             "selected_items",
+            "allfeedbacks"
         ]:
             if key in st.session_state:
                 del st.session_state[key]
