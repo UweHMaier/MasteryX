@@ -16,4 +16,5 @@ venv/
 .vscode/
 .idea/
 
-firebase_key.json
+
+credentials.json
