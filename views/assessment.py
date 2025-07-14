@@ -2,6 +2,10 @@ import streamlit as st
 import pandas as pd
 from gemini_utils import generate_feedback, generate_summary
 import random
+from PIL import Image
+import requests
+from io import BytesIO
+from functions import connect_to_google_sheet, save_to_sheet
 
 
 # Validate topic and goal selection
@@ -33,6 +37,9 @@ for key, default in {
     if key not in st.session_state:
         st.session_state[key] = default
 
+# Google sheet öffnen
+sheet = connect_to_google_sheet("1fwpDEjXcRI9R-tCP4QdY6HOe4ydbhk_mfsZT5xl_E8s", "Tabellenblatt1")
+
 
 # Random sampling of 3 items
 if "selected_items" not in st.session_state:
@@ -45,14 +52,29 @@ if "selected_items" not in st.session_state:
 selected_items = st.session_state.selected_items
 current_index = st.session_state.question_index
 
+
+
+
+
 # If assessment is ongoing
 if current_index < len(selected_items):
     item = selected_items[current_index]
     st.subheader(f"{selected_goal} ({current_index + 1}/{len(selected_items)})", divider="blue")
 
-    # Show image if available
-    if "image" in item and pd.notna(item["image"]) and item["image"].strip():
-        st.image(item["image"], width=300)
+    # Show image if available in google drive
+    if "image_drive" in item and pd.notna(item["image_drive"]) and item["image_drive"].strip():
+        # Load image from google drive
+        #imagefolder = "https://drive.google.com/drive/folders/1Dmz_eni7X5v4ZUpPKGdNVmAHE0gA9XQS?usp=sharing"
+        url = f"https://drive.google.com/uc?id={item["image_drive"]}"
+        response = requests.get(url)
+        image = Image.open(BytesIO(response.content))
+        st.image(image, width=300)
+    # or link to image
+    else:
+        if "image_internet" in item and pd.notna(item["image_internet"]) and item["image_internet"].strip():
+            st.image(item["image_internet"], width=300)
+        else:
+            st.write("Kein Bild")
 
     # Show additional instruction text if available
     if "text" in item and pd.notna(item["text"]) and item["text"].strip():
@@ -91,6 +113,9 @@ if current_index < len(selected_items):
     else:
         # Feedback anzeigen
         st.success(st.session_state.last_feedback)
+        # Save to sheet
+        # Connection to google sheets
+        save_to_sheet(sheet, st.session_state.last_user_answer)
         # Zwei Optionen: nochmal absenden oder weiter
         col1, col2 = st.columns(2)
         with col1:
