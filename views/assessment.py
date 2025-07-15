@@ -64,7 +64,6 @@ if current_index < len(selected_items):
     # Show image if available in google drive
     if "image_drive" in item and pd.notna(item["image_drive"]) and item["image_drive"].strip():
         # Load image from google drive
-        #imagefolder = "https://drive.google.com/drive/folders/1Dmz_eni7X5v4ZUpPKGdNVmAHE0gA9XQS?usp=sharing"
         url = f"https://drive.google.com/uc?id={item["image_drive"]}"
         response = requests.get(url)
         image = Image.open(BytesIO(response.content))

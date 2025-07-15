@@ -29,6 +29,9 @@ for key, default in {
     "session_id": str(uuid.uuid4()),
     "topic": None,
     "goal": None,
+    "rule_text": None,
+    "rule_image": None,
+    "video_url": None,
     "df_quizitems": df_quizitems,
     "df_rules": df_rules,
 }.items():
@@ -39,12 +42,16 @@ for key, default in {
 # --- Page setup ---
 goals_page = st.Page(
     page="views/goals.py",
-    title="Learning Goals",
+    title="Goals",
     default=True,
 )
 rules_page = st.Page(
     page="views/rules.py",
     title="Rules",
+)
+video_page = st.Page(
+    page="views/video.py",
+    title="Video",
 )
 assessment_page = st.Page(
     page="views/assessment.py",
@@ -52,7 +59,7 @@ assessment_page = st.Page(
 )
 
 # --- Navigation Menu ---
-pg = st.navigation(pages=[goals_page, rules_page, assessment_page])
+pg = st.navigation(pages=[goals_page, rules_page, video_page, assessment_page])
 
 # --- Shared on all pages ---
 st.logo("images/masteryx.jpg")

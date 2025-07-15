@@ -15,23 +15,16 @@ if not st.session_state.get("topic") or not st.session_state.get("goal"):
 
 # UI
 st.subheader(f"{st.session_state["topic"]}: {st.session_state["goal"]}")
-# Show image if available
-if st.session_state["rule_image"] == st.session_state["rule_image"]:
-     # is true when not nan
-     st.image(st.session_state["rule_image"], width=500)
-
-if st.session_state["rule_text"] == st.session_state["rule_text"]:
-     # is true when not nan
-     st.info(f"{st.session_state["rule_text"]}")
-else:
-     st.warning("No rules available.")
-
-
-# Button to video if available
+# Show video if available
 if st.session_state["video_url"] == st.session_state["video_url"]:
-    if st.button("Go to the video"):
-        st.switch_page("views/video.py")
+     # is true when not nan
+     st.video(st.session_state["video_url"])
+else:
+     st.warning("No video available")
 
+# Button to rules
+if st.button("Read the rules"):
+    st.switch_page("views/rules.py")
 
 # Button to assessment
 if st.button("Go to the quiz"):
